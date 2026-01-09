@@ -1,19 +1,18 @@
 import { existsSync, writeFileSync } from "fs";
-import { join, dirname } from "path";
-import { mkdir, writeFile } from "fs/promises";
+import { join } from "path";
 import { ConfigManager } from "../../config/manager.js";
+import { ProjectConfig, ProjectConfigSchema } from "../../types/config.js";
 import { LanguageDiscovery } from "../../utils/language-discovery.js";
 import { PluginManager } from "../../plugins/manager.js";
 import { ProjectConfigLoader } from "../../utils/project-config.js";
-import { EditorPlugin } from "../../plugins/types.js";
 
-export interface ConfigOptions {
+export interface ProjectInitOptions {
 	repo?: string;
 	force?: boolean;
 	workspaceRoot?: string;
 }
 
-export interface ConfigResult {
+export interface ProjectInitResult {
 	success: boolean;
 	generated: number;
 	updated: number;
@@ -29,13 +28,13 @@ export interface ConfigResult {
 }
 
 /**
- * Generate or update project configuration files for repositories.
- * Creates baseline.project.json files in each repo with test/lint/start commands.
+ * Initialize baseline.project.json files for repositories.
+ * This is a separate command from config - it only creates project configs, not workspace configs.
  * This is a pure function that returns results - no logging or process.exit.
  */
-export async function configRepositories(
-	options: ConfigOptions = {}
-): Promise<ConfigResult> {
+export async function initProjectConfigs(
+	options: ProjectInitOptions = {}
+): Promise<ProjectInitResult> {
 	const messages: Array<{
 		type: "info" | "success" | "error" | "warn" | "dim";
 		message: string;
@@ -118,7 +117,7 @@ export async function configRepositories(
 
 	messages.push({
 		type: "info",
-		message: "Generating Project Configurations",
+		message: "Initializing Project Configurations",
 	});
 
 	let generated = 0;
@@ -216,9 +215,11 @@ export async function configRepositories(
 					projectConfig.requiredPlugins;
 			}
 
+			// Validate and write
+			const validatedConfig = ProjectConfigSchema.parse(newProjectConfig);
 			writeFileSync(
 				projectConfigPath,
-				JSON.stringify(newProjectConfig, null, 2) + "\n"
+				JSON.stringify(validatedConfig, null, 2) + "\n"
 			);
 
 			if (configExists) {
@@ -263,61 +264,7 @@ export async function configRepositories(
 		}
 	}
 
-	// Generate editor workspace files if editor is configured
-	if (config.editor) {
-		messages.push({
-			type: "info",
-			message: "Generating Editor Workspace Files",
-		});
-		const pluginManager = PluginManager.getInstance();
-		await pluginManager.initialize();
-		const editorPlugins = pluginManager.getPluginsByType("editor");
-		const editorIds =
-			typeof config.editor === "string" ?
-				[config.editor]
-			:	config.editor;
-
-		for (const editorPlugin of editorPlugins) {
-			const ep = editorPlugin as EditorPlugin;
-			const shouldGenerate = editorIds.includes(ep.metadata.id);
-
-			if (shouldGenerate && ep.generateWorkspaceFile) {
-				try {
-					const workspaceFile = await ep.generateWorkspaceFile(
-						config,
-						workspaceRoot
-					);
-					if (workspaceFile) {
-						// Create directory if needed (e.g., .idea for IntelliJ)
-						const targetPath = join(
-							workspaceRoot,
-							workspaceFile.file
-						);
-						await mkdir(dirname(targetPath), {
-							recursive: true,
-						});
-
-						await writeFile(targetPath, workspaceFile.content);
-						messages.push({
-							type: "success",
-							message: `Generated ${workspaceFile.file}`,
-						});
-					}
-				} catch (error) {
-					const errorMsg =
-						error instanceof Error ?
-							error.message
-						:	String(error);
-					messages.push({
-						type: "error",
-						message: `Failed to generate ${ep.metadata.name} workspace: ${errorMsg}`,
-					});
-				}
-			}
-		}
-	}
-
-	messages.push({ type: "info", message: "Configuration Summary" });
+	messages.push({ type: "info", message: "Project Init Summary" });
 	messages.push({ type: "info", message: `Generated: ${generated}` });
 	messages.push({ type: "info", message: `Updated: ${updated}` });
 	if (skipped > 0) {
@@ -336,3 +283,4 @@ export async function configRepositories(
 		skippedRepos,
 	};
 }
+
