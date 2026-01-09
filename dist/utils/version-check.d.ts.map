@@ -1,0 +1,1 @@
+{"version":3,"file":"version-check.d.ts","sourceRoot":"","sources":["../../src/utils/version-check.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,aAAa,EAAE,MAAM,oBAAoB,CAAC;AAEnD;;;GAGG;AACH,qBAAa,YAAY;IACxB;;;;;;;;;;;;;;;;;;OAkBG;IACH,MAAM,CAAC,SAAS,CACf,OAAO,EAAE,MAAM,EACf,MAAM,CAAC,EAAE,aAAa,GACpB;QAAE,KAAK,EAAE,OAAO,CAAC;QAAC,MAAM,CAAC,EAAE,MAAM,CAAA;KAAE;CAqEtC"}

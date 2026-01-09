@@ -1,0 +1,1 @@
+{"version":3,"file":"editor-config.d.ts","sourceRoot":"","sources":["../../src/utils/editor-config.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,oBAAoB,CAAC;AAElD;;GAEG;AACH,wBAAgB,qBAAqB,CAAC,MAAM,EAAE,YAAY,GAAG,SAAS,GAAG,MAAM,EAAE,CAIhF;AAED;;GAEG;AACH,wBAAgB,oBAAoB,CAAC,MAAM,EAAE,YAAY,GAAG,SAAS,EAAE,QAAQ,EAAE,MAAM,GAAG,OAAO,CAEhG"}
