@@ -116,9 +116,9 @@ export async function configRepositories(
 	// Note: config command only generates editor workspace files, not baseline.project.json
 	// Use 'baseline project-init' to generate baseline.project.json files
 
-	let generated = 0;
-	let updated = 0;
-	let skipped = 0;
+	const generated = 0;
+	const updated = 0;
+	const skipped = 0;
 
 	// Generate editor workspace files if editor is configured
 	if (config.editor) {
