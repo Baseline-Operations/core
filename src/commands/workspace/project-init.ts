@@ -1,10 +1,10 @@
 import { existsSync, writeFileSync } from "fs";
 import { join } from "path";
-import { ConfigManager } from "../../config/manager.js";
-import { ProjectConfig, ProjectConfigSchema } from "../../types/config.js";
-import { LanguageDiscovery } from "../../utils/language-discovery.js";
-import { PluginManager } from "../../plugins/manager.js";
-import { ProjectConfigLoader } from "../../utils/project-config.js";
+import { ConfigManager } from "../../config/manager";
+import { ProjectConfig, ProjectConfigSchema } from "../../types/config";
+import { LanguageDiscovery } from "../../utils/language-discovery";
+import { PluginManager } from "../../plugins/manager";
+import { ProjectConfigLoader } from "../../utils/project-config";
 
 export interface ProjectInitOptions {
 	repo?: string;

@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { PackageManagerUtil, PackageManager } from "../package-manager.js";
+import { PackageManagerUtil, PackageManager } from "../package-manager";
 import { mkdtemp, writeFile, mkdir, rm } from "fs/promises";
 import { join } from "path";
 import { tmpdir } from "os";

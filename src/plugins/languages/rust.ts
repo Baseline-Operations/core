@@ -1,8 +1,8 @@
 import {
 	LanguagePlugin,
 	LanguagePluginOptions,
-} from "../types.js";
-import { LanguageProfile } from "../types.js";
+} from "../types";
+import { LanguageProfile } from "../types";
 import { existsSync } from "fs";
 import { join } from "path";
 

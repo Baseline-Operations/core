@@ -1,6 +1,6 @@
-import { NormalizedRepo } from "../types/config.js";
-import { PluginManager } from "../plugins/manager.js";
-import { ProviderPlugin } from "../plugins/types.js";
+import { NormalizedRepo } from "../types/config";
+import { PluginManager } from "../plugins/manager";
+import { ProviderPlugin } from "../plugins/types";
 
 /**
  * Get the git URL for a repository.

@@ -1,14 +1,14 @@
 import { existsSync } from "fs";
 import { join } from "path";
 import { execa } from "execa";
-import { ConfigManager } from "../../config/manager.js";
-import { VersionCheck } from "../../utils/version-check.js";
+import { ConfigManager } from "../../config/manager";
+import { VersionCheck } from "../../utils/version-check";
 import {
 	PackageManagerUtil,
 	PackageManager,
-} from "../../utils/package-manager.js";
-import { LanguageDiscovery } from "../../utils/language-discovery.js";
-import { PluginManager } from "../../plugins/manager.js";
+} from "../../utils/package-manager";
+import { LanguageDiscovery } from "../../utils/language-discovery";
+import { PluginManager } from "../../plugins/manager";
 
 export interface DoctorOptions {
 	workspaceRoot?: string;

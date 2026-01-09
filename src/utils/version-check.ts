@@ -1,5 +1,5 @@
 import semver from "semver";
-import { VersionPolicy } from "../types/config.js";
+import { VersionPolicy } from "../types/config";
 
 /**
  * Utility class for validating version strings against version policies.

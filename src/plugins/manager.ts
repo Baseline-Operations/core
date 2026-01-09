@@ -5,8 +5,8 @@ import {
 	PluginPackage,
 	PluginRequirement,
 	LanguageProfile,
-} from "./types.js";
-import { Logger } from "../utils/logger.js";
+} from "./types";
+import { Logger } from "../utils/logger";
 import { existsSync, readdirSync, readFileSync } from "fs";
 import { join, dirname, extname } from "path";
 import { pathToFileURL, fileURLToPath } from "url";

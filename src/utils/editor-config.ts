@@ -1,4 +1,4 @@
-import { EditorConfig } from "../types/config.js";
+import { EditorConfig } from "../types/config";
 
 /**
  * Normalize editor config (string or array) to array of editor IDs.

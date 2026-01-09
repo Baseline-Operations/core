@@ -1,7 +1,7 @@
-import { ConfigManager } from "../../config/manager.js";
-import { PluginInstaller } from "../../utils/plugin-installer.js";
-import { PluginManager } from "../../plugins/manager.js";
-import { PluginDependency } from "../../types/config.js";
+import { ConfigManager } from "../../config/manager";
+import { PluginInstaller } from "../../utils/plugin-installer";
+import { PluginManager } from "../../plugins/manager";
+import { PluginDependency } from "../../types/config";
 
 export interface PluginInstallOptions {
 	version?: string;

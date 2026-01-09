@@ -1,11 +1,11 @@
 import { existsSync, readFileSync } from "fs";
 import { join } from "path";
 import { execa } from "execa";
-import { ConfigManager } from "../../config/manager.js";
-import { GitUtil } from "../../utils/git.js";
-import { BaselineConfig } from "../../types/config.js";
-import { LanguageDiscovery } from "../../utils/language-discovery.js";
-import { PluginManager } from "../../plugins/manager.js";
+import { ConfigManager } from "../../config/manager";
+import { GitUtil } from "../../utils/git";
+import { BaselineConfig } from "../../types/config";
+import { LanguageDiscovery } from "../../utils/language-discovery";
+import { PluginManager } from "../../plugins/manager";
 
 export interface ReleaseOptions {
 	workspaceRoot?: string;

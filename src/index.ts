@@ -8,17 +8,17 @@
  */
 
 // Export config
-export * from './config/index.js';
+export * from './config/index';
 
 // Export types
-export * from './types/index.js';
+export * from './types/index';
 
 // Export utils
-export * from './utils/index.js';
+export * from './utils/index';
 
 // Export plugins
-export * from './plugins/index.js';
+export * from './plugins/index';
 
 // Export command functions (not CLI wrappers)
-export * from './commands/index.js';
+export * from './commands/index';
 

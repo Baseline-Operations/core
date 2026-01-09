@@ -1,7 +1,7 @@
-import githubPlugin from "./github.js";
-import gitlabPlugin from "./gitlab.js";
-import bitbucketPlugin from "./bitbucket.js";
-import { ProviderPlugin } from "../types.js";
+import githubPlugin from "./github";
+import gitlabPlugin from "./gitlab";
+import bitbucketPlugin from "./bitbucket";
+import { ProviderPlugin } from "../types";
 
 /**
  * All built-in provider plugins.

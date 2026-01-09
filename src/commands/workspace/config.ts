@@ -1,11 +1,8 @@
-import { existsSync, writeFileSync } from "fs";
 import { join, dirname } from "path";
 import { mkdir, writeFile } from "fs/promises";
-import { ConfigManager } from "../../config/manager.js";
-import { LanguageDiscovery } from "../../utils/language-discovery.js";
-import { PluginManager } from "../../plugins/manager.js";
-import { ProjectConfigLoader } from "../../utils/project-config.js";
-import { EditorPlugin } from "../../plugins/types.js";
+import { ConfigManager } from "../../config/manager";
+import { PluginManager } from "../../plugins/manager";
+import { EditorPlugin } from "../../plugins/types";
 
 export interface ConfigOptions {
 	repo?: string;
@@ -82,7 +79,7 @@ export async function configRepositories(
 
 	// Normalize repos (convert strings to objects)
 	const { normalizeAllRepos } = await import(
-		"../../utils/config-helpers.js"
+		"../../utils/config-helpers"
 	);
 	const allReposNormalized = normalizeAllRepos(
 		config.packages || config.repos,
@@ -116,152 +113,12 @@ export async function configRepositories(
 		};
 	}
 
-	messages.push({
-		type: "info",
-		message: "Generating Project Configurations",
-	});
+	// Note: config command only generates editor workspace files, not baseline.project.json
+	// Use 'baseline project-init' to generate baseline.project.json files
 
 	let generated = 0;
 	let updated = 0;
 	let skipped = 0;
-
-	for (const repo of reposToProcess) {
-		try {
-			const repoPath = join(workspaceRoot, repo.path);
-			const projectConfigPath = join(
-				repoPath,
-				"baseline.project.json"
-			);
-
-			if (!existsSync(repoPath)) {
-				const reason = "not cloned";
-				messages.push({
-					type: "warn",
-					message: `Skipping ${repo.name} (${reason})`,
-				});
-				skippedRepos.push({ name: repo.name, reason });
-				skipped++;
-				continue;
-			}
-
-			// Use language plugins to discover commands
-			const pluginManager = PluginManager.getInstance();
-			await pluginManager.initialize();
-
-			const defaultCommands: {
-				test?: string;
-				lint?: string;
-				start?: string;
-			} = {};
-
-			// Discover commands using language plugins
-			const testCommand = await LanguageDiscovery.discoverCommand(
-				repo,
-				workspaceRoot,
-				"test",
-				pluginManager
-			);
-			if (testCommand) defaultCommands.test = testCommand;
-
-			const lintCommand = await LanguageDiscovery.discoverCommand(
-				repo,
-				workspaceRoot,
-				"lint",
-				pluginManager
-			);
-			if (lintCommand) defaultCommands.lint = lintCommand;
-
-			// Note: start commands are not auto-discovered for safety
-
-			// Merge with existing commands if config already exists
-			const configExists = existsSync(projectConfigPath);
-			const projectConfig =
-				configExists && !options.force ?
-					ProjectConfigLoader.load(repoPath) || {}
-				:	{};
-
-			// Merge commands (existing takes precedence over defaults)
-			const commands = {
-				...defaultCommands,
-				...(projectConfig.commands || {}),
-				...(repo.commands || {}),
-			};
-
-			// Only include commands that are defined
-			const finalCommands: Record<string, string> = {};
-			if (commands.test) finalCommands.test = commands.test;
-			if (commands.lint) finalCommands.lint = commands.lint;
-			if (commands.start) finalCommands.start = commands.start;
-
-			// Build project config
-			const newProjectConfig: Partial<ProjectConfig> = {
-				name: repo.name,
-				library: repo.library ?? projectConfig.library ?? false,
-				commands:
-					Object.keys(finalCommands).length > 0 ?
-						finalCommands
-					:	undefined,
-			};
-
-			if (repo.startInDocker) {
-				newProjectConfig.startInDocker = true;
-				if (repo.dockerImage) {
-					newProjectConfig.dockerImage = repo.dockerImage;
-				}
-			}
-
-			// Preserve existing requiredPlugins if they exist
-			if (projectConfig.requiredPlugins) {
-				newProjectConfig.requiredPlugins =
-					projectConfig.requiredPlugins;
-			}
-
-			writeFileSync(
-				projectConfigPath,
-				JSON.stringify(newProjectConfig, null, 2) + "\n"
-			);
-
-			if (configExists) {
-				messages.push({
-					type: "success",
-					message: `Updated ${repo.name}`,
-				});
-				updated++;
-			} else {
-				messages.push({
-					type: "success",
-					message: `Generated ${repo.name}`,
-				});
-				generated++;
-			}
-
-			if (Object.keys(finalCommands).length > 0) {
-				messages.push({
-					type: "dim",
-					message: `  Commands: ${Object.keys(finalCommands).join(", ")}`,
-				});
-				configFiles.push({
-					repo: repo.name,
-					path: projectConfigPath,
-					commands: Object.keys(finalCommands),
-				});
-			} else {
-				configFiles.push({
-					repo: repo.name,
-					path: projectConfigPath,
-					commands: [],
-				});
-			}
-		} catch (error) {
-			const errorMsg =
-				error instanceof Error ? error.message : String(error);
-			messages.push({
-				type: "error",
-				message: `Failed to generate config for ${repo.name}: ${errorMsg}`,
-			});
-			errorRepos.push({ name: repo.name, error: errorMsg });
-		}
-	}
 
 	// Generate editor workspace files if editor is configured
 	if (config.editor) {

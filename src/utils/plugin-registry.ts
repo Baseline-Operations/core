@@ -1,5 +1,5 @@
 import { execa } from "execa";
-import { Logger } from "./logger.js";
+import { Logger } from "./logger";
 import { readFile, writeFile, mkdir } from "fs/promises";
 import { existsSync } from "fs";
 import { join } from "path";

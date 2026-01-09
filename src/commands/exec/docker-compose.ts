@@ -1,4 +1,4 @@
-import { ConfigManager } from "../../config/manager.js";
+import { ConfigManager } from "../../config/manager";
 import { existsSync } from "fs";
 import { join } from "path";
 import { execa } from "execa";

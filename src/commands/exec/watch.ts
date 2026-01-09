@@ -1,10 +1,10 @@
 import { existsSync, watch } from "fs";
 import { join, relative } from "path";
 import { execa } from "execa";
-import { ConfigManager } from "../../config/manager.js";
+import { ConfigManager } from "../../config/manager";
 import { readFileSync } from "fs";
-import { LanguageDiscovery } from "../../utils/language-discovery.js";
-import { PluginManager } from "../../plugins/manager.js";
+import { LanguageDiscovery } from "../../utils/language-discovery";
+import { PluginManager } from "../../plugins/manager";
 
 /**
  * Try to load chokidar if available (better performance for large repos).

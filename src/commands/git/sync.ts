@@ -1,6 +1,6 @@
 import { join } from "path";
-import { ConfigManager } from "../../config/manager.js";
-import { GitUtil } from "../../utils/git.js";
+import { ConfigManager } from "../../config/manager";
+import { GitUtil } from "../../utils/git";
 
 export interface SyncOptions {
 	workspaceRoot?: string;

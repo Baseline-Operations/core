@@ -1,6 +1,6 @@
 import {
 	PackageManagerPlugin,
-} from "../types.js";
+} from "../types";
 import { execa } from "execa";
 
 /**

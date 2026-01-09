@@ -1,10 +1,10 @@
 import { execa } from "execa";
 import { join } from "path";
 import { existsSync } from "fs";
-import { ConfigManager } from "../../config/manager.js";
-import { GitUtil } from "../../utils/git.js";
-import { PluginManager } from "../../plugins/manager.js";
-import { ProviderPlugin } from "../../plugins/types.js";
+import { ConfigManager } from "../../config/manager";
+import { GitUtil } from "../../utils/git";
+import { PluginManager } from "../../plugins/manager";
+import { ProviderPlugin } from "../../plugins/types";
 
 export interface PrCreateOptions {
 	title?: string;

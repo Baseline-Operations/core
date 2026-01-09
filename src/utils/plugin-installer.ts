@@ -2,8 +2,8 @@ import { existsSync, statSync } from "fs";
 import { mkdir, readdir, readFile, writeFile } from "fs/promises";
 import { join, dirname, basename } from "path";
 import { execa } from "execa";
-import { Logger } from "./logger.js";
-import { PluginDependency } from "../types/config.js";
+import { Logger } from "./logger";
+import { PluginDependency } from "../types/config";
 
 /**
  * Plugin installation directory (git-ignored)

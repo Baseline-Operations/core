@@ -1,4 +1,4 @@
-import { ProviderPlugin } from "../types.js";
+import { ProviderPlugin } from "../types";
 import { execa } from "execa";
 
 /**

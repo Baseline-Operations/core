@@ -1,9 +1,9 @@
 import { writeFileSync } from "fs";
 import { join } from "path";
-import { ConfigManager } from "../../config/manager.js";
-import { LanguageDiscovery } from "../../utils/language-discovery.js";
-import { PluginManager } from "../../plugins/manager.js";
-import { PackageManagerPlugin } from "../../plugins/types.js";
+import { ConfigManager } from "../../config/manager";
+import { LanguageDiscovery } from "../../utils/language-discovery";
+import { PluginManager } from "../../plugins/manager";
+import { PackageManagerPlugin } from "../../plugins/types";
 
 export interface LinkOptions {
 	workspaceRoot?: string;

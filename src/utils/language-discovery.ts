@@ -1,10 +1,10 @@
 import { existsSync, readFileSync } from "fs";
 import { join } from "path";
-import { PluginManager } from "../plugins/manager.js";
+import { PluginManager } from "../plugins/manager";
 import {
 	LanguagePlugin,
 	ProjectFile,
-} from "../plugins/types.js";
+} from "../plugins/types";
 
 /**
  * Utility class for discovering language-specific information from repositories.

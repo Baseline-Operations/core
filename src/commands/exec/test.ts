@@ -1,9 +1,9 @@
 import { existsSync } from "fs";
 import { join } from "path";
 import { execa } from "execa";
-import { ConfigManager } from "../../config/manager.js";
-import { LanguageDiscovery } from "../../utils/language-discovery.js";
-import { PluginManager } from "../../plugins/manager.js";
+import { ConfigManager } from "../../config/manager";
+import { LanguageDiscovery } from "../../utils/language-discovery";
+import { PluginManager } from "../../plugins/manager";
 
 export interface TestOptions {
 	filter?: string;

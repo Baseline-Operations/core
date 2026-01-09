@@ -1,8 +1,8 @@
-import vscodePlugin from "./vscode.js";
-import cursorPlugin from "./cursor.js";
-import intellijPlugin from "./intellij.js";
-import sublimePlugin from "./sublime.js";
-import { EditorPlugin } from "../types.js";
+import vscodePlugin from "./vscode";
+import cursorPlugin from "./cursor";
+import intellijPlugin from "./intellij";
+import sublimePlugin from "./sublime";
+import { EditorPlugin } from "../types";
 
 /**
  * All built-in editor plugins.

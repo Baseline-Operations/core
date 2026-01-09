@@ -1,8 +1,8 @@
-export * from './types.js';
-export * from './manager.js';
-export * from './builtin/index.js';
-export * from './languages/index.js';
-export * from './providers/index.js';
-export * from './package-managers/index.js';
-export * from './editors/index.js';
+export * from './types';
+export * from './manager';
+export * from './builtin/index';
+export * from './languages/index';
+export * from './providers/index';
+export * from './package-managers/index';
+export * from './editors/index';
 

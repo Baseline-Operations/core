@@ -1,5 +1,5 @@
-import { EditorPlugin } from "../types.js";
-import { BaselineConfig } from "../../types/config.js";
+import { EditorPlugin } from "../types";
+import { BaselineConfig } from "../../types/config";
 
 /**
  * Built-in VS Code editor plugin.

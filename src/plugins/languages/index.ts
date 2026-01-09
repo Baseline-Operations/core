@@ -1,9 +1,9 @@
-import nodePlugin from "./node.js";
-import pythonPlugin from "./python.js";
-import goPlugin from "./go.js";
-import rustPlugin from "./rust.js";
-import javaPlugin from "./java.js";
-import { LanguagePlugin } from "../types.js";
+import nodePlugin from "./node";
+import pythonPlugin from "./python";
+import goPlugin from "./go";
+import rustPlugin from "./rust";
+import javaPlugin from "./java";
+import { LanguagePlugin } from "../types";
 
 /**
  * All built-in language plugins.

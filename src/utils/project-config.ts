@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "fs";
 import { join } from "path";
-import { ProjectConfig, ProjectConfigSchema } from "../types/config.js";
+import { ProjectConfig, ProjectConfigSchema } from "../types/config";
 
 /**
  * Utility for loading and validating baseline.project.json files.

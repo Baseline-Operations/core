@@ -1,6 +1,6 @@
 import { execa } from "execa";
 import { join } from "path";
-import { ConfigManager } from "../../config/manager.js";
+import { ConfigManager } from "../../config/manager";
 
 export interface ExecOptions {
 	filter?: string;

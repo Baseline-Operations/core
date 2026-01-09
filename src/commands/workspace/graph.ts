@@ -1,8 +1,8 @@
-import { ConfigManager } from "../../config/manager.js";
+import { ConfigManager } from "../../config/manager";
 import { existsSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
-import { NormalizedRepo } from "../../types/config.js";
-import { normalizeAllRepos } from "../../utils/config-helpers.js";
+import { NormalizedRepo } from "../../types/config";
+import { normalizeAllRepos } from "../../utils/config-helpers";
 
 export interface GraphOptions {
 	format?: "text" | "dot" | "json";

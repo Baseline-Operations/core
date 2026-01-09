@@ -2,18 +2,18 @@ import enquirer from "enquirer";
 const { prompt } = enquirer;
 import { mkdir, writeFile } from "fs/promises";
 import { join, dirname } from "path";
-import { ConfigManager, BASELINE_CONFIG_FILE } from "../../config/manager.js";
-import { BaselineConfig } from "../../types/config.js";
+import { ConfigManager, BASELINE_CONFIG_FILE } from "../../config/manager";
+import { BaselineConfig } from "../../types/config";
 // Logger removed - this is a pure function, logging is handled by CLI wrapper
 import {
 	PackageManagerUtil,
 	PackageManager,
-} from "../../utils/package-manager.js";
+} from "../../utils/package-manager";
 // Note: createCommandExample removed - command.example is in CLI package
 import { execa } from "execa";
-import { PluginManager } from "../../plugins/manager.js";
-import { VersionPolicy, LanguageProfile } from "../../plugins/types.js";
-import { EditorPlugin } from "../../plugins/types.js";
+import { PluginManager } from "../../plugins/manager";
+import { VersionPolicy, LanguageProfile } from "../../plugins/types";
+import { EditorPlugin } from "../../plugins/types";
 
 interface InitAnswers {
 	workspaceName: string;

@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "fs/promises";
 import { existsSync } from "fs";
 import { join } from "path";
-import { BaselineConfig, BaselineConfigSchema } from "../types/config.js";
+import { BaselineConfig, BaselineConfigSchema, Package } from "../types/config";
 
 /** Name of the baseline configuration file */
 export const BASELINE_CONFIG_FILE = "baseline.json";

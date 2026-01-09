@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { VersionCheck } from "../version-check.js";
-import { VersionPolicy } from "../../types/config.js";
+import { VersionCheck } from "../version-check";
+import { VersionPolicy } from "../../types/config";
 
 describe("VersionCheck", () => {
 	describe("satisfies", () => {

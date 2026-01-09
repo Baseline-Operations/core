@@ -1,7 +1,7 @@
 import { execa } from "execa";
 import { existsSync } from "fs";
 import { join } from "path";
-import { RetryUtil } from "./retry.js";
+import { RetryUtil } from "./retry";
 
 export interface GitStatus {
 	branch: string;

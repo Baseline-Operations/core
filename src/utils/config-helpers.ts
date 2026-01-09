@@ -1,4 +1,4 @@
-import { Package, NormalizedPackage, LanguagesConfig, VersionPolicy, BaselineConfig } from "../types/config.js";
+import { Package, NormalizedPackage, LanguagesConfig, VersionPolicy, BaselineConfig } from "../types/config";
 import { basename } from "path";
 
 /**

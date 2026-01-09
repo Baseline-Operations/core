@@ -1,5 +1,5 @@
 // Import VersionPolicy from config types (re-export for plugin use)
-import type { VersionPolicy } from "../types/config.js";
+import type { VersionPolicy } from "../types/config";
 export type { VersionPolicy };
 
 /**

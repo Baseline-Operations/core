@@ -1,6 +1,6 @@
 import { join } from "path";
-import { ConfigManager } from "../../config/manager.js";
-import { NormalizedPackage } from "../../types/config.js";
+import { ConfigManager } from "../../config/manager";
+import { NormalizedPackage } from "../../types/config";
 
 export interface AddOptions {
 	name?: string;

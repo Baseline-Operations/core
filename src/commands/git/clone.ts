@@ -1,9 +1,9 @@
 import { mkdir } from "fs/promises";
 import { dirname, join } from "path";
-import { ConfigManager } from "../../config/manager.js";
-import { GitUtil } from "../../utils/git.js";
-import { getRepoGitUrl } from "../../utils/repo-url.js";
-import { normalizeRepo } from "../../utils/config-helpers.js";
+import { ConfigManager } from "../../config/manager";
+import { GitUtil } from "../../utils/git";
+import { getRepoGitUrl } from "../../utils/repo-url";
+import { normalizeRepo } from "../../utils/config-helpers";
 
 export interface CloneOptions {
 	workspaceRoot?: string;

@@ -1,7 +1,7 @@
 import { join } from "path";
 import { execa } from "execa";
-import { ConfigManager } from "../../config/manager.js";
-import { GitUtil } from "../../utils/git.js";
+import { ConfigManager } from "../../config/manager";
+import { GitUtil } from "../../utils/git";
 
 export interface BranchOptions {
 	create?: boolean;

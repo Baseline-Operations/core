@@ -1,11 +1,11 @@
-import npmPlugin from "./npm.js";
-import pnpmPlugin from "./pnpm.js";
-import yarnPlugin from "./yarn.js";
-import pipPlugin from "./pip.js";
-import cargoPlugin from "./cargo.js";
-import mavenPlugin from "./maven.js";
-import gradlePlugin from "./gradle.js";
-import { PackageManagerPlugin } from "../types.js";
+import npmPlugin from "./npm";
+import pnpmPlugin from "./pnpm";
+import yarnPlugin from "./yarn";
+import pipPlugin from "./pip";
+import cargoPlugin from "./cargo";
+import mavenPlugin from "./maven";
+import gradlePlugin from "./gradle";
+import { PackageManagerPlugin } from "../types";
 
 /**
  * All built-in package manager plugins.

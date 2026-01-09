@@ -2,7 +2,7 @@ import { execa } from "execa";
 import { existsSync } from "fs";
 import { readFile } from "fs/promises";
 import { join } from "path";
-import { Logger } from "./logger.js";
+import { Logger } from "./logger";
 
 export interface NpmPluginInfo {
 	name: string;
